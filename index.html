@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unscroll | Break the Doomscroll. Reclaim Your Mind.</title>
+    <meta name="description" content="Unscroll is the 100% privacy-first, serverless doomscroll blocker and focus companion for Android. Join the waitlist for 1 year free Pro access!">
+    
+    <!-- Google Fonts & Lucide Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Ambient Glow Elements -->
+    <div class="ambient-glow glow-top"></div>
+    <div class="ambient-glow glow-bottom"></div>
+
+    <!-- Navigation Header -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">
+                <div class="logo-icon">
+                    <i data-lucide="shield-off"></i>
+                </div>
+                <span class="logo-text">Unscroll<span class="dot">.</span></span>
+            </a>
+            
+            <nav class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#privacy">Privacy</a>
+                <a href="#faq">FAQ</a>
+                <button class="nav-modal-btn" onclick="openModal('privacyModal')">Privacy Policy</button>
+                <button class="nav-modal-btn" onclick="openModal('termsModal')">Terms of Use</button>
+            </nav>
+
+            <a href="#waitlist" class="btn btn-nav">
+                <span>Claim 1 Year Free</span>
+                <i data-lucide="sparkles"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-container">
+            
+            <div class="badge-pill">
+                <span class="badge-dot"></span>
+                <span>Exclusive Launch Offer: First 1,000 Users Get <strong>1 Year Free Pro</strong></span>
+            </div>
+
+            <h1 class="hero-title">
+                Break the Doomscroll.<br>
+                <span class="text-gradient">Reclaim Your Focus.</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                The 100% offline, privacy-first Android app blocker with real-time short-form video friction intervention, procedural soundscapes, and zero tracking.
+            </p>
+
+            <!-- Waitlist Form Component -->
+            <div class="waitlist-card" id="waitlist">
+                <div class="waitlist-header">
+                    <div class="gift-icon"><i data-lucide="gift"></i></div>
+                    <div>
+                        <h3>Join the VIP Launch Waitlist</h3>
+                        <p>Unlock 12 months of Unscroll Pro ($19.99 value) completely free at launch.</p>
+                    </div>
+                </div>
+
+                <form id="waitlistForm" class="waitlist-form">
+                    <div class="input-wrapper">
+                        <i data-lucide="mail" class="input-icon"></i>
+                        <input type="email" id="userEmail" placeholder="Enter your email address" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-glow">
+                        <span>Get 1 Year Free</span>
+                        <i data-lucide="arrow-right"></i>
+                    </button>
+                </form>
+
+                <div id="waitlistSuccess" class="waitlist-success hidden">
+                    <div class="success-icon"><i data-lucide="check-circle-2"></i></div>
+                    <h4>You're on the VIP List! 🎉</h4>
+                    <p>Your 1-Year Free Pro pass code is reserved:</p>
+                    <div class="code-box">
+                        <span id="vipCode">UNSCROLL-VIP-8492</span>
+                        <button onclick="copyVipCode()" class="btn-copy" title="Copy Code">
+                            <i data-lucide="copy" id="copyIcon"></i>
+                        </button>
+                    </div>
+                    <small>Save this code or check your inbox on launch day to redeem!</small>
+                </div>
+
+                <!-- Progress Counter -->
+                <div class="counter-box">
+                    <div class="counter-labels">
+                        <span><i data-lucide="users"></i> <strong id="claimedCount">847</strong> / 1,000 Spots Claimed</span>
+                        <span class="text-accent">85% Full</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 85%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Value Chips -->
+            <div class="hero-chips">
+                <div class="chip"><i data-lucide="shield-check"></i> 100% Offline & Serverless</div>
+                <div class="chip"><i data-lucide="eye-off"></i> Zero Tracking or Ads</div>
+                <div class="chip"><i data-lucide="lock"></i> Encrypted SQLCipher Storage</div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- App Showcase Mockup & Intervention Flow -->
+    <section class="showcase-section" id="features">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Intelligent Friction Engine</span>
+                <h2>Short-Form Video Doomscrolling Interrupt</h2>
+                <p>Unscroll doesn't just block apps—it interrupts the sub-conscious swipe loop with a science-backed 3-screen friction flow.</p>
+            </div>
+
+            <div class="showcase-grid">
+                <!-- Step 1 Card -->
+                <div class="feature-card">
+                    <div class="step-badge">Step 1</div>
+                    <div class="card-icon"><i data-lucide="zap"></i></div>
+                    <h3>Real-Time Detection</h3>
+                    <p>Native Android Accessibility Service detects short-form feeds (Reels, Shorts, TikTok) the moment you start scrolling unconsciously.</p>
+                </div>
+
+                <!-- Step 2 Card -->
+                <div class="feature-card highlight-card">
+                    <div class="step-badge">Step 2</div>
+                    <div class="card-icon"><i data-lucide="wind"></i></div>
+                    <h3>Breath & Mindfulness Pause</h3>
+                    <p>Forces a mandatory 5-second breath pause screen, breaking the instant dopamine reward feedback loop.</p>
+                </div>
+
+                <!-- Step 3 Card -->
+                <div class="feature-card">
+                    <div class="step-badge">Step 3</div>
+                    <div class="card-icon"><i data-lucide="timer"></i></div>
+                    <h3>Intentional Timer Lock</h3>
+                    <p>Choose an explicit 5, 10, or 15-minute timer before viewing. When the timer expires, the app re-locks automatically.</p>
+                </div>
+            </div>
+
+            <!-- Additional Features Grid -->
+            <div class="grid-2col">
+                <div class="info-box">
+                    <div class="box-icon"><i data-lucide="waves"></i></div>
+                    <div>
+                        <h3>Procedural Ambient Sound Synthesizer</h3>
+                        <p>Generate real-time binaural beats, brown noise, and rain acoustics natively on your device without downloading heavy audio files or streaming online.</p>
+                    </div>
+                </div>
+
+                <div class="info-box">
+                    <div class="box-icon"><i data-lucide="hard-drive"></i></div>
+                    <div>
+                        <h3>Private Google Drive AppData Sync</h3>
+                        <p>Sync your focus metrics and streak data exclusively to your personal Google Drive hidden AppData folder. No third-party servers ever touch your data.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Privacy Pillar Section -->
+    <section class="privacy-section" id="privacy">
+        <div class="section-container">
+            <div class="privacy-banner">
+                <div class="banner-content">
+                    <div class="banner-icon"><i data-lucide="shield-alert"></i></div>
+                    <h2>Our Radical Privacy Promise</h2>
+                    <p>Most focus apps sell your app usage habits or store your data on Firebase. Unscroll is built with a zero-compromise privacy commitment.</p>
+                    
+                    <ul class="privacy-list">
+                        <li><i data-lucide="x-circle" class="text-danger"></i> No Firebase or Google Analytics</li>
+                        <li><i data-lucide="x-circle" class="text-danger"></i> No AdMob or Advertising SDKs</li>
+                        <li><i data-lucide="x-circle" class="text-danger"></i> No Account Registration Required</li>
+                        <li><i data-lucide="check-circle-2" class="text-success"></i> 100% Encrypted Local Database (SQLCipher)</li>
+                    </ul>
+
+                    <button class="btn btn-outline" onclick="openModal('privacyModal')">
+                        <span>Read Full Privacy Policy</span>
+                        <i data-lucide="file-text"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Accordion Section -->
+    <section class="faq-section" id="faq">
+        <div class="section-container">
+            <div class="section-header">
+                <span class="section-tag">Got Questions?</span>
+                <h2>Frequently Asked Questions</h2>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>How do I claim the 1-Year Free Pro offer?</span>
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="accordion-body">
+                        Simply enter your email in the waitlist box above. You will receive a unique VIP claim code. When Unscroll launches on the Google Play Store, enter your code in the app settings to unlock 12 full months of Unscroll Pro for free.
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>Is my data truly private and offline?</span>
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="accordion-body">
+                        Yes! Unscroll does not have central servers. Your app usage stats and focus logs stay 100% on your device inside an encrypted SQLCipher database. If you enable sync, it backs up directly to your own Google Drive account.
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>How does short-form video intervention work?</span>
+                        <i data-lucide="chevron-down"></i>
+                    </button>
+                    <div class="accordion-body">
+                        Unscroll uses Android's native Accessibility Service to detect when apps like Instagram Reels or YouTube Shorts open. It immediately overlays a calm breath exercise screen to break the mindless scrolling habit.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <a href="#" class="nav-logo">
+                    <div class="logo-icon"><i data-lucide="shield-off"></i></div>
+                    <span class="logo-text">Unscroll<span class="dot">.</span></span>
+                </a>
+                <p>Reclaim your attention span with 100% privacy-first focus tools.</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="#waitlist">Waitlist</a>
+                <a href="#features">Features</a>
+                <button onclick="openModal('privacyModal')">Privacy Policy</button>
+                <button onclick="openModal('termsModal')">Terms of Use</button>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Unscroll App. Built for Privacy & Mental Well-being.</p>
+        </div>
+    </footer>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacyModal" class="modal-overlay hidden">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>Privacy Policy</h2>
+                <button onclick="closeModal('privacyModal')" class="modal-close"><i data-lucide="x"></i></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Effective Date:</strong> August 3, 2026</p>
+                
+                <h3>1. Zero Data Collection Architecture</h3>
+                <p>Unscroll is designed as a privacy-first, serverless application. We do not collect, store, transmit, or sell any Personally Identifiable Information (PII), location data, app usage habits, or contact information.</p>
+
+                <h3>2. Local Storage & Encryption</h3>
+                <p>All focus metrics, session logs, and blocked app preferences are stored exclusively on your Android device in an encrypted SQLCipher database and Android EncryptedSharedPreferences. No external servers have access to this key or data.</p>
+
+                <h3>3. Accessibility & Usage Stats Permissions</h3>
+                <p>Unscroll requires Android Accessibility and Usage Access permissions solely to detect short-form video feeds (such as Instagram Reels or TikTok) and display the friction intervention screen. This data is processed locally on-device and is never logged or transmitted anywhere.</p>
+
+                <h3>4. Optional Google Drive Backup</h3>
+                <p>If you choose to enable backup, data is stored in your personal Google Drive account's isolated <code>AppData</code> folder. We do not have access to your Google Drive or any files within it.</p>
+
+                <h3>5. Third-Party Analytics & Telemetry</h3>
+                <p>We use Aptabase for anonymous, aggregate crash diagnostics. Aptabase is an open-source, privacy-first service that does not track IP addresses, device identifiers, or user identities.</p>
+
+                <h3>6. Contact Us</h3>
+                <p>If you have questions regarding this Privacy Policy, you can reach us at <code>privacy@unscroll.app</code>.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms of Use Modal -->
+    <div id="termsModal" class="modal-overlay hidden">
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>Terms of Use</h2>
+                <button onclick="closeModal('termsModal')" class="modal-close"><i data-lucide="x"></i></button>
+            </div>
+            <div class="modal-body">
+                <p><strong>Effective Date:</strong> August 3, 2026</p>
+
+                <h3>1. Acceptance of Terms</h3>
+                <p>By downloading, installing, or using the Unscroll application, you agree to be bound by these Terms of Use.</p>
+
+                <h3>2. License & License Grant</h3>
+                <p>Unscroll grants you a personal, non-transferable, non-exclusive license to use the app on your personal Android device in accordance with these Terms.</p>
+
+                <h3>3. VIP Waitlist & 1-Year Free Pro Offer</h3>
+                <p>Users who join the Unscroll launch waitlist receive a promotional claim code valid for 12 months of Unscroll Pro access at no charge upon public release. This code is non-transferable and holds no cash value.</p>
+
+                <h3>4. In-App Purchases & Subscriptions</h3>
+                <p>Purchases and subscriptions processed through Google Play Billing or RevenueCat are subject to Google Play's standard refund policies.</p>
+
+                <h3>5. Limitation of Liability</h3>
+                <p>Unscroll is provided "AS IS" without warranties of any kind. Under no circumstances shall Unscroll be liable for indirect, incidental, or consequential damages resulting from app usage.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
