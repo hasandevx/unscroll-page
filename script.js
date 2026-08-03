@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 2. Form Submission Handler
     const form = document.getElementById('waitlistForm');
     if (form) {
-        form.addEventListener('submit', (e) => {
+        form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const emailInput = document.getElementById('userEmail');
             const email = emailInput.value.trim();
@@ -26,6 +26,27 @@ document.addEventListener('DOMContentLoaded', () => {
             // Save to LocalStorage
             localStorage.setItem('unscroll_vip_email', email);
             localStorage.setItem('unscroll_vip_code', code);
+
+            // Optional external form submission (e.g. FormSubmit, Formspree, or Google Sheets API)
+            const formEndpoint = form.getAttribute('action');
+            if (formEndpoint && formEndpoint !== '#' && formEndpoint !== '') {
+                try {
+                    await fetch(formEndpoint, {
+                        method: 'POST',
+                        headers: { 
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify({ 
+                            email: email, 
+                            vip_code: code,
+                            timestamp: new Date().toISOString() 
+                        })
+                    });
+                } catch (err) {
+                    console.warn('Waitlist endpoint submission warning (saved locally):', err);
+                }
+            }
 
             // Increment claimed count
             const claimedElem = document.getElementById('claimedCount');

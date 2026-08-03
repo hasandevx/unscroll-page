@@ -3,18 +3,82 @@
 
 <head>
     <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width'>
-    <title>Terms &amp; Conditions</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Terms &amp; Conditions | Unscroll</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: rgba(22, 29, 45, 0.75);
+            --text-color: #cbd5e1;
+            --text-muted: #94a3b8;
+            --accent-color: #6366f1;
+            --border-color: rgba(255, 255, 255, 0.1);
+        }
         body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            padding: 1em;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.75;
+            padding: 2rem 1rem;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+        .legal-container {
+            max-width: 840px;
+            width: 100%;
+            background: var(--card-bg);
+            backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        h1, h2, h3, strong {
+            color: #ffffff;
+        }
+        h1 {
+            font-size: 2.2rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #a5b4fc, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        a {
+            color: #818cf8;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+        .back-link:hover {
+            color: #ffffff;
+        }
+        ul {
+            padding-left: 1.3rem;
+        }
+        li {
+            margin-bottom: 0.5rem;
         }
     </style>
 </head>
 
 <body>
-    <strong>Terms &amp; Conditions</strong><br>
+    <div class="legal-container">
+        <a href="../index.html" class="back-link">&larr; Back to Unscroll</a>
+        <h1>Terms &amp; Conditions</h1>
     <p>These terms and conditions apply to the Unscroll app for mobile devices, together with any related services
         operated by Sajjad Movahhedi (collectively, the "Application"). Sajjad Movahhedi is hereby referred to as the
         "Service Provider".</p><br>
@@ -214,6 +278,7 @@
     <p>These terms and conditions are effective as of 2026-08-03</p><br><strong>Contact Us</strong>
     <p>If you have any questions or suggestions about the Terms and Conditions, please do not hesitate to contact the
         Service Provider at hasan.movahhedi.developer@gmail.com.</p>
+    </div>
 </body>
 
 </html>
