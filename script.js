@@ -15,9 +15,19 @@ document.addEventListener('DOMContentLoaded', () => {
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
             const emailInput = document.getElementById('userEmail');
-            const email = emailInput.value.trim();
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const email = emailInput ? emailInput.value.trim() : '';
 
             if (!email) return;
+
+            // UI Loading state
+            let originalBtnHtml = '';
+            if (submitBtn) {
+                originalBtnHtml = submitBtn.innerHTML;
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `<span>Securing Spot...</span> <i data-lucide="loader-2" class="spin-icon"></i>`;
+                if (window.lucide) lucide.createIcons();
+            }
 
             // Generate unique VIP claim code
             const randomId = Math.floor(1000 + Math.random() * 9000);
@@ -27,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('unscroll_vip_email', email);
             localStorage.setItem('unscroll_vip_code', code);
 
-            // Optional external form submission (e.g. FormSubmit, Formspree, or Google Sheets API)
+            // Send to Email Marketing Provider Endpoint (ConvertKit / EmailOctopus / Loops / FormSubmit)
             const formEndpoint = form.getAttribute('action');
             if (formEndpoint && formEndpoint !== '#' && formEndpoint !== '') {
                 try {
@@ -39,20 +49,29 @@ document.addEventListener('DOMContentLoaded', () => {
                         },
                         body: JSON.stringify({ 
                             email: email, 
+                            email_address: email,
                             vip_code: code,
+                            source: 'unscroll_landing_page',
                             timestamp: new Date().toISOString() 
                         })
                     });
                 } catch (err) {
-                    console.warn('Waitlist endpoint submission warning (saved locally):', err);
+                    console.warn('Waitlist API submission note (saved to browser storage):', err);
                 }
             }
 
             // Increment claimed count
             const claimedElem = document.getElementById('claimedCount');
             if (claimedElem) {
-                let current = parseInt(claimedElem.innerText.replace(',', '')) || 847;
+                let current = parseInt(claimedElem.innerText.replace(/,/g, '')) || 847;
                 claimedElem.innerText = (current + 1).toLocaleString();
+            }
+
+            // Reset submit button state
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalBtnHtml;
+                if (window.lucide) lucide.createIcons();
             }
 
             showSuccessState(code);
