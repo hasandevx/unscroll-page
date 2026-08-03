@@ -5,8 +5,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Check if user already joined waitlist in LocalStorage
     const savedCode = localStorage.getItem('unscroll_vip_code');
+    const savedEmail = localStorage.getItem('unscroll_vip_email');
     if (savedCode) {
-        showSuccessState(savedCode);
+        showSuccessState(savedCode, savedEmail);
     }
 
     // 2. Form Submission Handler
@@ -71,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (window.lucide) lucide.createIcons();
             }
 
-            showSuccessState(code);
+            showSuccessState(code, email);
         });
     }
 
@@ -93,14 +94,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
-function showSuccessState(code) {
+function showSuccessState(code, email) {
     const form = document.getElementById('waitlistForm');
     const successBox = document.getElementById('waitlistSuccess');
     const codeElem = document.getElementById('vipCode');
+    const emailElem = document.getElementById('registeredEmail');
 
     if (form && successBox && codeElem) {
         form.classList.add('hidden');
         codeElem.innerText = code;
+        if (emailElem && email) {
+            emailElem.innerText = email;
+        }
         successBox.classList.remove('hidden');
     }
 }
