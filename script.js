@@ -37,23 +37,20 @@ document.addEventListener('DOMContentLoaded', () => {
             localStorage.setItem('unscroll_vip_email', email);
             localStorage.setItem('unscroll_vip_code', code);
 
-            // Send to Email Marketing Provider Endpoint (ConvertKit / EmailOctopus / Loops / FormSubmit)
+            // Send to Email Marketing Provider Endpoint (EmailOctopus / ConvertKit / Loops / FormSubmit)
             const formEndpoint = form.getAttribute('action');
             if (formEndpoint && formEndpoint !== '#' && formEndpoint !== '') {
                 try {
+                    const formData = new FormData();
+                    formData.append('emailAddress', email);
+                    formData.append('email', email);
+                    formData.append('vip_code', code);
+                    formData.append('source', 'unscroll_landing_page');
+
                     await fetch(formEndpoint, {
                         method: 'POST',
-                        headers: { 
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json'
-                        },
-                        body: JSON.stringify({ 
-                            email: email, 
-                            email_address: email,
-                            vip_code: code,
-                            source: 'unscroll_landing_page',
-                            timestamp: new Date().toISOString() 
-                        })
+                        body: formData,
+                        mode: 'no-cors'
                     });
                 } catch (err) {
                     console.warn('Waitlist API submission note (saved to browser storage):', err);
